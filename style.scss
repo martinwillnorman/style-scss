@@ -52,7 +52,8 @@
   flex-basis: 16.6667%;
 }
 
-.col-1-5 {
+.col-1-5,
+.col-fifth {
   flex-basis: 20%;
 }
 
@@ -60,7 +61,8 @@
   flex-basis: 20.8333%;
 }
 
-.col-6 {
+.col-6,
+.col-fourth {
   flex-basis: 25%;
 }
 
@@ -68,7 +70,8 @@
   flex-basis: 29.1667%;
 }
 
-.col-8 {
+.col-8,
+.col-third {
   flex-basis: 33.3333%;
 }
 
@@ -76,7 +79,8 @@
   flex-basis: 37.5%;
 }
 
-.col-2-5 {
+.col-2-5,
+.col-two-fifths {
   flex-basis: 40%;
 }
 
@@ -88,7 +92,8 @@
   flex-basis: 45.8333%;
 }
 
-.col-12 {
+.col-12,
+.col-half {
   flex-basis: 50%;
 }
 
@@ -100,7 +105,8 @@
   flex-basis: 58.3333%;
 }
 
-.col-3-5 {
+.col-3-5,
+.col-three-fifths {
   flex-basis: 60%;
 }
 
@@ -108,7 +114,8 @@
   flex-basis: 62.5%;
 }
 
-.col-16 {
+.col-16,
+.col-two-thirds {
   flex-basis: 66.6667%;
 }
 
@@ -116,7 +123,8 @@
   flex-basis: 70.8333%;
 }
 
-.col-18 {
+.col-18,
+.col-three-fourths {
   flex-basis: 75%;
 }
 
@@ -124,7 +132,8 @@
   flex-basis: 79.1667%;
 }
 
-.col-4-5 {
+.col-4-5,
+.col-four-fifths {
   flex-basis: 80%;
 }
 
@@ -144,50 +153,143 @@
   flex-basis: 95.8333%;
 }
 
-.col-24 {
+.col-24,
+.col-full {
   flex-basis: 100%;
 }
 
-@media only screen and (max-width: 1000px) {
-  .response-10 {
-    flex-basis: 100%;
+// --------------------------------------------------------- break col width at breakpoints
+
+@each $breakpoint-name, $breakpoint-value in $breakpoints {
+  @media only screen and (max-width: $breakpoint-value - 1) {
+    .respond-#{$breakpoint-name} {
+      flex-basis: 100%;
+    }
   }
 }
 
-@media only screen and (max-width: 900px) {
-  .response-9 {
-    flex-basis: 100%;
-  }
+// --------------------------------------------------------- restrictors
+
+.res-1 {
+  max-width: calc($container-width * 1 / 24);
 }
 
-@media only screen and (max-width: 800px) {
-  .response-8 {
-    flex-basis: 100%;
-  }
+.res-2 {
+  max-width: calc($container-width * 2 / 24);
 }
 
-@media only screen and (max-width: 700px) {
-  .response-7 {
-    flex-basis: 100%;
-  }
+.res-3 {
+  max-width: calc($container-width * 3 / 24);
 }
 
-@media only screen and (max-width: 600px) {
-  .response-6 {
-    flex-basis: 100%;
-  }
+.res-4 {
+  max-width: calc($container-width * 4 / 24);
 }
 
-@media only screen and (max-width: 500px) {
-  .response-5 {
-    flex-basis: 100%;
-  }
+.res-1-5,
+.res-fifth {
+  max-width: calc($container-width * 1 / 5);
 }
 
-@media only screen and (max-width: 400px) {
-  .response-4 {
-    flex-basis: 100%;
-  }
+.res-5 {
+  max-width: calc($container-width * 5 / 24);
+}
+
+.res-6,
+.res-fourth {
+  max-width: calc($container-width * 6 / 24);
+}
+
+.res-7 {
+  max-width: calc($container-width * 7 / 24);
+}
+
+.res-8,
+.res-third {
+  max-width: calc($container-width * 8 / 24);
+}
+
+.res-9 {
+  max-width: calc($container-width * 9 / 24);
+}
+
+.res-2-5,
+.res-two-fifths {
+  max-width: calc($container-width * 2 / 5);
+}
+
+.res-10 {
+  max-width: calc($container-width * 10 / 24);
+}
+
+.res-11 {
+  max-width: calc($container-width * 11 / 24);
+}
+
+.res-12,
+.res-half {
+  max-width: calc($container-width * 12 / 24);
+}
+
+.res-13 {
+  max-width: calc($container-width * 13 / 24);
+}
+
+.res-14 {
+  max-width: calc($container-width * 14 / 24);
+}
+
+.res-3-5,
+.res-three-fifths {
+  max-width: calc($container-width * 3 / 5);
+}
+
+.res-15 {
+  max-width: calc($container-width * 15 / 24);
+}
+
+.res-16,
+.res-two-thirds {
+  max-width: calc($container-width * 16 / 24);
+}
+
+.res-17 {
+  max-width: calc($container-width * 17 / 24);
+}
+
+.res-18,
+.res-three-fourths {
+  max-width: calc($container-width * 18 / 24);
+}
+
+.res-19 {
+  max-width: calc($container-width * 19 / 24);
+}
+
+.res-4-5,
+.res-four-fifths {
+  max-width: calc($container-width * 4 / 5);
+}
+
+.res-20 {
+  max-width: calc($container-width * 20 / 24);
+}
+
+.res-21 {
+  max-width: calc($container-width * 21 / 24);
+}
+
+.res-22 {
+  max-width: calc($container-width * 22 / 24);
+}
+
+.res-23 {
+  max-width: calc($container-width * 23 / 24);
+}
+
+.res-24,
+.res-full {
+  max-width: calc($container-width * 24 / 24);
 }
 
 // --------------------------------------------------------- flex options (esp. for .row and .col-row classes)
@@ -353,12 +455,6 @@ template,
 template,
 [copy-white] {
   color: #fff;
-}
-
-template,
-[flex] {
-  display: flex;
-  flex-wrap: wrap;
 }
 
 // --------------------------------------------------------- responsive elements

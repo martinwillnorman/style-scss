@@ -19,17 +19,17 @@ html {
   -webkit-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
   box-sizing: border-box;
-  font-size: 18px;
-  line-height: 1.48rem;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
 }
 
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   color: #000;
-  font-family: serif;
+  font-family: $font-family-base;
   font-size: 1rem;
-  line-height: 1.48rem;
+  line-height: $line-height-base;
 }
 
 h1,
@@ -38,47 +38,47 @@ h3,
 h4,
 h5,
 h6 {
-  color: #000;
-  font-family: sans-serif;
+  color: $font-color-header;
+  font-family: $font-family-header;
 }
 
 h1 {
-  font-size: 4.2358rem;
-  line-height: 4.44rem;
-  margin-top: 1.48rem;
-  margin-bottom: 2.96rem;
+  font-size: 1rem * $scale-factor * $scale-factor * $scale-factor;
+  line-height: $line-height-base * 3;
+  margin-top: $line-height-base;
+  margin-bottom: $line-height-base * 2;
 }
 
 h2 {
-  font-size: 2.61792rem;
-  line-height: 2.96rem;
-  margin-top: 1.48rem;
-  margin-bottom: 1.48rem;
+  font-size: 1rem * $scale-factor * $scale-factor;
+  line-height: $line-height-base * 2;
+  margin-top: $line-height-base;
+  margin-bottom: $line-height-base;
 }
 
 h3 {
-  font-size: 1.618rem;
-  line-height: 2.96rem;
-  margin-top: 1.48rem;
+  font-size: 1rem * $scale-factor;
+  line-height: $line-height-base * 2;
+  margin-top: $line-height-base;
   margin-bottom: 0rem;
 }
 
 h4 {
-  font-size: 1rem;
-  line-height: 1.48rem;
-  margin-top: 1.48rem;
+  font-size: 1rem * ($scale-factor / 2);
+  line-height: $line-height-base;
+  margin-top: $line-height-base;
   margin-bottom: 0rem;
 }
 
 h5 {
-  font-size: 1rem;
-  line-height: 1.48rem;
-  margin-top: 1.48rem;
+  font-size: 1rem * ($scale-factor / 3);
+  line-height: $line-height-base;
+  margin-top: $line-height-base;
   margin-bottom: 0rem;
 }
 
 h6 {
-  font-size: 0.9rem;
+  font-size: 1rem;
   line-height: 1rem;
   margin-top: 1rem;
   margin-bottom: 0rem;
@@ -91,7 +91,7 @@ pre,
 table,
 blockquote {
   margin-top: 0rem;
-  margin-bottom: 1.48rem;
+  margin-bottom: $line-height-base;
 }
 
 ul ul,
@@ -146,12 +146,12 @@ pre {
 
 a {
   background-color: transparent;
-  color: #000;
-  text-decoration: none !important;
+  color: $link-color-base;
+  text-decoration: $link-decoration;
 }
 a:hover {
-  color: none;
-  text-decoration: none !important;
+  color: $link-color-hover;
+  text-decoration: $link-hover-decoration;
 }
 
 abbr[title] {
