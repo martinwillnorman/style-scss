@@ -1,0 +1,63 @@
+// --------------------------------------------------------- website color
+
+$website-color-base: #000;
+$website-color-secondary: #fff;
+
+// --------------------------------------------------------- container padding & width : ($container-padding) also sets column padding and negative row margin
+
+$container-width: 1230px;
+$container-padding: 20px;
+
+// --------------------------------------------------------- section margin
+
+$margin-base: 60px;
+
+// --------------------------------------------------------- typography settings
+
+$font-size-base: 18px;
+$line-height-base: 1.48rem;
+$scale-factor: 1.618;
+
+// --------------------------------------------------------- font family
+
+$font-family-base: serif;
+$font-family-header: sans-serif;
+
+// --------------------------------------------------------- font color
+
+$font-color-base: #000;
+$font-color-header: #000;
+$font-color-additional: (
+  "subheader": #eee
+);
+
+// --------------------------------------------------------- link behavior
+
+$link-decoration: none !important;
+$link-hover-decoration: none !important;
+
+// --------------------------------------------------------- link color
+
+$link-color-base: #000;
+$link-color-hover: none;
+
+// --------------------------------------------------------- background color
+
+$background-colors: (
+  "white": #fff,
+  "black": #000,
+  "grey": #eee
+);
+
+// --------------------------------------------------------- breakpoints
+
+$breakpoints: (
+  "phone": 450px,
+  "phablet": 540px,
+  "tablet-small": 640px,
+  "tablet": 768px,
+  "tablet-wide": 1024px,
+  "desktop": 1248px,
+  "desktop-wide": 1440px,
+  "container": $container-width
+);

@@ -1,0 +1,426 @@
+@import "./_normalize";
+@import "./_config";
+@import "./mixins";
+
+// --------------------------------------------------------- container
+
+.container {
+  @include auto;
+  margin: 0 $container-padding;
+  max-width: $container-width;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+// --------------------------------------------------------- row
+
+.row {
+  margin-left: -$container-padding / 2;
+  margin-right: -$container-padding / 2;
+  flex: auto;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.col-row {
+  flex: auto;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+// --------------------------------------------------------- column
+
+.column {
+  margin-right: $container-padding / 2;
+  margin-left: $container-padding / 2;
+}
+
+.col-1 {
+  flex-basis: 4.1667%;
+}
+
+.col-2 {
+  flex-basis: 8.3333%;
+}
+
+.col-3 {
+  flex-basis: 12.5%;
+}
+
+.col-4 {
+  flex-basis: 16.6667%;
+}
+
+.col-1-5 {
+  flex-basis: 20%;
+}
+
+.col-5 {
+  flex-basis: 20.8333%;
+}
+
+.col-6 {
+  flex-basis: 25%;
+}
+
+.col-7 {
+  flex-basis: 29.1667%;
+}
+
+.col-8 {
+  flex-basis: 33.3333%;
+}
+
+.col-9 {
+  flex-basis: 37.5%;
+}
+
+.col-2-5 {
+  flex-basis: 40%;
+}
+
+.col-10 {
+  flex-basis: 41.6667%;
+}
+
+.col-11 {
+  flex-basis: 45.8333%;
+}
+
+.col-12 {
+  flex-basis: 50%;
+}
+
+.col-13 {
+  flex-basis: 54.1667%;
+}
+
+.col-14 {
+  flex-basis: 58.3333%;
+}
+
+.col-3-5 {
+  flex-basis: 60%;
+}
+
+.col-15 {
+  flex-basis: 62.5%;
+}
+
+.col-16 {
+  flex-basis: 66.6667%;
+}
+
+.col-17 {
+  flex-basis: 70.8333%;
+}
+
+.col-18 {
+  flex-basis: 75%;
+}
+
+.col-19 {
+  flex-basis: 79.1667%;
+}
+
+.col-4-5 {
+  flex-basis: 80%;
+}
+
+.col-20 {
+  flex-basis: 83.3333%;
+}
+
+.col-21 {
+  flex-basis: 87.5%;
+}
+
+.col-22 {
+  flex-basis: 91.6667%;
+}
+
+.col-23 {
+  flex-basis: 95.8333%;
+}
+
+.col-24 {
+  flex-basis: 100%;
+}
+
+@media only screen and (max-width: 1000px) {
+  .response-10 {
+    flex-basis: 100%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .response-9 {
+    flex-basis: 100%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .response-8 {
+    flex-basis: 100%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .response-7 {
+    flex-basis: 100%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .response-6 {
+    flex-basis: 100%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .response-5 {
+    flex-basis: 100%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .response-4 {
+    flex-basis: 100%;
+  }
+}
+
+// --------------------------------------------------------- flex options (esp. for .row and .col-row classes)
+
+.flex-right {
+  justify-content: flex-end;
+}
+
+.flex-center {
+  justify-content: center;
+}
+
+.flex-middle {
+  align-items: center;
+}
+
+.flex-bottom {
+  align-items: bottom;
+}
+
+// --------------------------------------------------------- margin
+
+.margin-small {
+  margin: $margin-base 0;
+}
+
+.margin-medium {
+  margin: $margin-base * 1.66667 0;
+}
+
+.margin-large {
+  margin: $margin-base * 2.3333 0;
+}
+
+.margin-xlarge {
+  margin: $margin-base * 3.3333 0;
+}
+
+.margin-xxlarge {
+  margin: $margin-base * 5 0;
+}
+
+.margin-small-top {
+  margin-top: $margin-base;
+}
+
+.margin-medim-top {
+  margin-top: $margin-base * 1.66667;
+}
+
+.margin-large-top {
+  margin-top: $margin-base * 2.3333;
+}
+
+.margin-xlarge-top {
+  margin-top: $margin-base * 3.3333;
+}
+
+.margin-xxlarge-top {
+  margin-top: $margin-base * 5;
+}
+
+.margin-small-bottom {
+  margin-bottom: $margin-base;
+}
+
+.margin-medium-bottom {
+  margin-bottom: $margin-base * 1.66667;
+}
+
+.margin-large-bottom {
+  margin-bottom: $margin-base * 2.3333;
+}
+
+.margin-xlarge-bottom {
+  margin-bottom: $margin-base * 3.3333;
+}
+
+.margin-xxlarge-bottom {
+  margin-bottom: $margin-base * 5;
+}
+
+// --------------------------------------------------------- unordered list
+
+ul.no-style {
+  margin-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+ul.two {
+  columns: 2;
+}
+
+// --------------------------------------------------------- copy color
+
+@each $color-name, $color-code in $font-color-additional {
+  .#{$color-name} {
+    color: $color-code;
+  }
+}
+
+// --------------------------------------------------------- background color
+
+@each $background-name, $color-code in $background-colors {
+  template,
+  [fill-#{$background-name}] {
+    background-color: $color-code;
+  }
+}
+
+// --------------------------------------------------------- utilities
+
+template,
+[hidden] {
+  display: none;
+}
+
+template,
+[full-screen] {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+template,
+[full-image] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+template,
+[full-background] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-size: cover;
+}
+
+template,
+[full-width] {
+  width: 100%;
+}
+
+template,
+[hide-overflow] {
+  overflow: hidden;
+}
+
+template,
+[copy-center] {
+  text-align: center;
+}
+
+template,
+[copy-white] {
+  color: #fff;
+}
+
+template,
+[flex] {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+// --------------------------------------------------------- responsive elements
+
+@include mediaquery(phablet) {
+  ul.two {
+    columns: 1;
+  }
+
+  .margin-medium {
+    margin: $margin-base 0;
+  }
+
+  .margin-large {
+    margin: $margin-base 0;
+  }
+
+  .margin-xlarge {
+    margin: $margin-base * 1.3333 0;
+  }
+
+  .margin-xxlarge {
+    margin: $margin-base * 1.6667 0;
+  }
+
+  .margin-medim-top {
+    margin-top: $margin-base;
+  }
+
+  .margin-large-top {
+    margin-top: $margin-base;
+  }
+
+  .margin-xlarge-top {
+    margin-top: $margin-base * 1.3333;
+  }
+
+  .margin-xxlarge-top {
+    margin-top: $margin-base * 1.6667;
+  }
+
+  .margin-medium-bottom {
+    margin-bottom: $margin-base;
+  }
+
+  .margin-large-bottom {
+    margin-bottom: $margin-base;
+  }
+
+  .margin-xlarge-bottom {
+    margin-bottom: $margin-base * 1.3333;
+  }
+
+  .margin-xxlarge-bottom {
+    margin-bottom: $margin-base * 1.6667;
+  }
+}
+
+/* notes
+  
+  responsive letter spacing formula: calc((x)px - (0.0y)em)
+
+    container padding usually between 10 - 40px or 1.66667rem
+
+    recommended max-width for text - 560px */

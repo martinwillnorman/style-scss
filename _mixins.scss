@@ -1,0 +1,47 @@
+@mixin center($position) {
+  position: absolute;
+
+  @if ($position == "vertical") {
+    top: 50%;
+    transform: translateY(-50%);
+  } @else if ($position == "horizontal") {
+    left: 50%;
+    transform: translate(-50%);
+  } @else if ($position == "both") {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin mediaquery($width, $type: max) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if $type == max {
+      $width: $width - 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: "") {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+@mixin truncate($truncation-boundary) {
+  max-width: $truncation-boundary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin auto {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
