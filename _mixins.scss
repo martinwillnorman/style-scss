@@ -1,4 +1,4 @@
-@mixin center($position) {
+@mixin absolute-center($position) {
   position: absolute;
 
   @if ($position == "vertical") {
@@ -14,15 +14,10 @@
   }
 }
 
-@mixin mediaquery($width, $type: max) {
-  @if map_has_key($breakpoints, $width) {
-    $width: map_get($breakpoints, $width);
-    @if $type == max {
-      $width: $width - 1px;
-    }
-    @media only screen and (#{$type}-width: $width) {
-      @content;
-    }
+@mixin auto-center {
+  margin: {
+    left: auto;
+    right: auto;
   }
 }
 
@@ -39,9 +34,134 @@
   text-overflow: ellipsis;
 }
 
-@mixin auto {
-  margin: {
-    left: auto;
-    right: auto;
+@mixin create-columns($no-of-columns) {
+  @for $i from 1 through $no-of-columns {
+    @if $i / $no-of-columns * 100 == 25 {
+      .col-#{$i},
+      .col-fourth {
+        flex-basis: $i / $no-of-columns * 100%;
+      }
+    } @else if $i / $no-of-columns * 100 == 20 {
+      .col-#{$i},
+      .col-fifth {
+        flex-basis: $i / $no-of-columns * 100%;
+      }
+    } @else if $i / $no-of-columns * 100 == 33.333333 {
+      .col-#{$i},
+      .col-third {
+        flex-basis: $i / $no-of-columns * 100%;
+      }
+    } @else if $i / $no-of-columns * 100 == 40 {
+      .col-#{$i},
+      .col-two-fifths {
+        flex-basis: $i / $no-of-columns * 100%;
+      }
+    } @else if $i / $no-of-columns * 100 == 50 {
+      .col-#{$i},
+      .col-half {
+        flex-basis: $i / $no-of-columns * 100%;
+      }
+    } @else if $i / $no-of-columns * 100 == 60 {
+      .col-#{$i},
+      .col-three-fifths {
+        flex-basis: $i / $no-of-columns * 100%;
+      }
+    } @else if $i / $no-of-columns * 100 == 66.66667 {
+      .col-#{$i},
+      .col-two-thirds {
+        flex-basis: $i / $no-of-columns * 100%;
+      }
+    } @else if $i / $no-of-columns * 100 == 75 {
+      .col-#{$i},
+      .col-three-fourths {
+        flex-basis: $i / $no-of-columns * 100%;
+      }
+    } @else if $i / $no-of-columns * 100 == 80 {
+      .col-#{$i},
+      .col-four-fifths {
+        flex-basis: $i / $no-of-columns * 100%;
+      }
+    } @else if $i / $no-of-columns * 100 == 100 {
+      .col-#{$i},
+      .col-full {
+        flex-basis: $i / $no-of-columns * 100%;
+      }
+    } @else {
+      .col-#{$i} {
+        flex-basis: $i / $no-of-columns * 100%;
+      }
+    }
+  }
+}
+
+@mixin create-restrictors($no-of-restrictors) {
+  @for $i from 1 through $no-of-restrictors {
+    @if $i / $no-of-restrictors * 100 == 25 {
+      .res-#{$i},
+      .res-fourth {
+        max-width: $i / $no-of-restrictors * 100%;
+      }
+    } @else if $i / $no-of-restrictors * 100 == 20 {
+      .res-#{$i},
+      .res-fifth {
+        max-width: $i / $no-of-restrictors * 100%;
+      }
+    } @else if $i / $no-of-restrictors * 100 == 33.333333 {
+      .res-#{$i},
+      .res-third {
+        max-width: $i / $no-of-restrictors * 100%;
+      }
+    } @else if $i / $no-of-restrictors * 100 == 40 {
+      .res-#{$i},
+      .res-two-fifths {
+        max-width: $i / $no-of-restrictors * 100%;
+      }
+    } @else if $i / $no-of-restrictors * 100 == 50 {
+      .res-#{$i},
+      .res-half {
+        max-width: $i / $no-of-restrictors * 100%;
+      }
+    } @else if $i / $no-of-restrictors * 100 == 60 {
+      .res-#{$i},
+      .res-three-fifths {
+        max-width: $i / $no-of-restrictors * 100%;
+      }
+    } @else if $i / $no-of-restrictors * 100 == 66.66667 {
+      .res-#{$i},
+      .res-two-thirds {
+        max-width: $i / $no-of-restrictors * 100%;
+      }
+    } @else if $i / $no-of-restrictors * 100 == 75 {
+      .res-#{$i},
+      .res-three-fourths {
+        max-width: $i / $no-of-restrictors * 100%;
+      }
+    } @else if $i / $no-of-restrictors * 100 == 80 {
+      .res-#{$i},
+      .res-four-fifths {
+        max-width: $i / $no-of-restrictors * 100%;
+      }
+    } @else if $i / $no-of-restrictors * 100 == 100 {
+      .res-#{$i},
+      .res-full {
+        max-width: $i / $no-of-restrictors * 100%;
+      }
+    } @else {
+      .res-#{$i} {
+        max-width: $i / $no-of-restrictors * 100%;
+      }
+    }
+  }
+}
+
+@mixin create-media-query($width, $type: max) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if $type == max {
+      $width: $width - 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
   }
 }

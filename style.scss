@@ -1,11 +1,114 @@
-@import "./_normalize";
-@import "./_config";
-@import "./mixins";
+@import "node_modules/normalize.scss/normalize", "config", "mixins";
+
+// --------------------------------------------------------- root
+
+* {
+  box-sizing: inherit;
+}
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+}
+
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: $font-color-base;
+  font-family: $font-family-base;
+  font-size: 1rem;
+  line-height: $line-height-base;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $font-color-header;
+  font-family: $font-family-header;
+}
+
+h1 {
+  font-size: 1rem * $scale-factor * $scale-factor * $scale-factor;
+  line-height: $line-height-base * 3;
+  margin-top: $line-height-base;
+  margin-bottom: $line-height-base * 2;
+}
+
+h2 {
+  font-size: 1rem * $scale-factor * $scale-factor;
+  line-height: $line-height-base * 2;
+  margin-top: $line-height-base;
+  margin-bottom: $line-height-base;
+}
+
+h3 {
+  font-size: 1rem * $scale-factor;
+  line-height: $line-height-base * 2;
+  margin-top: $line-height-base;
+  margin-bottom: 0rem;
+}
+
+h4 {
+  font-size: 1rem * ($scale-factor / 2);
+  line-height: $line-height-base;
+  margin-top: $line-height-base;
+  margin-bottom: 0rem;
+}
+
+h5 {
+  font-size: 1rem * ($scale-factor / 3);
+  line-height: $line-height-base;
+  margin-top: $line-height-base;
+  margin-bottom: 0rem;
+}
+
+h6 {
+  font-size: 1rem;
+  line-height: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 0rem;
+}
+
+p,
+ul,
+ol,
+pre,
+table,
+blockquote {
+  margin-top: 0rem;
+  margin-bottom: $line-height-base;
+}
+
+a {
+  background-color: transparent;
+  color: $link-color-base;
+  text-decoration: $link-decoration;
+}
+a:hover {
+  color: $link-color-hover;
+  text-decoration: $link-hover-decoration;
+}
 
 // --------------------------------------------------------- container
 
 .container {
-  @include auto;
+  @include auto-center;
   margin: 0 $container-padding;
   max-width: $container-width;
   display: flex;
@@ -29,6 +132,22 @@
   flex-flow: row wrap;
 }
 
+.row,
+.col-row {
+  &.horizontal-center {
+    justify-content: center;
+  }
+  &.horizontal-end {
+    justify-content: flex-end;
+  }
+  &.vertical-center {
+    align-items: center;
+  }
+  &.vertical-end {
+    align-items: flex-end;
+  }
+}
+
 // --------------------------------------------------------- column
 
 .column {
@@ -36,278 +155,27 @@
   margin-left: $container-padding / 2;
 }
 
-.col-1 {
-  flex-basis: 4.1667%;
+@include create-columns(12);
+@include create-columns(5);
+
+// --------------------------------------------------------- restrictor
+
+.restrictor {
+  margin-right: $container-padding / 2;
+  margin-left: $container-padding / 2;
 }
 
-.col-2 {
-  flex-basis: 8.3333%;
-}
-
-.col-3 {
-  flex-basis: 12.5%;
-}
-
-.col-4 {
-  flex-basis: 16.6667%;
-}
-
-.col-1-5,
-.col-fifth {
-  flex-basis: 20%;
-}
-
-.col-5 {
-  flex-basis: 20.8333%;
-}
-
-.col-6,
-.col-fourth {
-  flex-basis: 25%;
-}
-
-.col-7 {
-  flex-basis: 29.1667%;
-}
-
-.col-8,
-.col-third {
-  flex-basis: 33.3333%;
-}
-
-.col-9 {
-  flex-basis: 37.5%;
-}
-
-.col-2-5,
-.col-two-fifths {
-  flex-basis: 40%;
-}
-
-.col-10 {
-  flex-basis: 41.6667%;
-}
-
-.col-11 {
-  flex-basis: 45.8333%;
-}
-
-.col-12,
-.col-half {
-  flex-basis: 50%;
-}
-
-.col-13 {
-  flex-basis: 54.1667%;
-}
-
-.col-14 {
-  flex-basis: 58.3333%;
-}
-
-.col-3-5,
-.col-three-fifths {
-  flex-basis: 60%;
-}
-
-.col-15 {
-  flex-basis: 62.5%;
-}
-
-.col-16,
-.col-two-thirds {
-  flex-basis: 66.6667%;
-}
-
-.col-17 {
-  flex-basis: 70.8333%;
-}
-
-.col-18,
-.col-three-fourths {
-  flex-basis: 75%;
-}
-
-.col-19 {
-  flex-basis: 79.1667%;
-}
-
-.col-4-5,
-.col-four-fifths {
-  flex-basis: 80%;
-}
-
-.col-20 {
-  flex-basis: 83.3333%;
-}
-
-.col-21 {
-  flex-basis: 87.5%;
-}
-
-.col-22 {
-  flex-basis: 91.6667%;
-}
-
-.col-23 {
-  flex-basis: 95.8333%;
-}
-
-.col-24,
-.col-full {
-  flex-basis: 100%;
-}
+@include create-restrictors(12);
+@include create-restrictors(5);
 
 // --------------------------------------------------------- break col width at breakpoints
 
 @each $breakpoint-name, $breakpoint-value in $breakpoints {
   @media only screen and (max-width: $breakpoint-value - 1) {
-    .respond-#{$breakpoint-name} {
+    .break-#{$breakpoint-name} {
       flex-basis: 100%;
     }
   }
-}
-
-// --------------------------------------------------------- restrictors
-
-.res-1 {
-  max-width: calc($container-width * 1 / 24);
-}
-
-.res-2 {
-  max-width: calc($container-width * 2 / 24);
-}
-
-.res-3 {
-  max-width: calc($container-width * 3 / 24);
-}
-
-.res-4 {
-  max-width: calc($container-width * 4 / 24);
-}
-
-.res-1-5,
-.res-fifth {
-  max-width: calc($container-width * 1 / 5);
-}
-
-.res-5 {
-  max-width: calc($container-width * 5 / 24);
-}
-
-.res-6,
-.res-fourth {
-  max-width: calc($container-width * 6 / 24);
-}
-
-.res-7 {
-  max-width: calc($container-width * 7 / 24);
-}
-
-.res-8,
-.res-third {
-  max-width: calc($container-width * 8 / 24);
-}
-
-.res-9 {
-  max-width: calc($container-width * 9 / 24);
-}
-
-.res-2-5,
-.res-two-fifths {
-  max-width: calc($container-width * 2 / 5);
-}
-
-.res-10 {
-  max-width: calc($container-width * 10 / 24);
-}
-
-.res-11 {
-  max-width: calc($container-width * 11 / 24);
-}
-
-.res-12,
-.res-half {
-  max-width: calc($container-width * 12 / 24);
-}
-
-.res-13 {
-  max-width: calc($container-width * 13 / 24);
-}
-
-.res-14 {
-  max-width: calc($container-width * 14 / 24);
-}
-
-.res-3-5,
-.res-three-fifths {
-  max-width: calc($container-width * 3 / 5);
-}
-
-.res-15 {
-  max-width: calc($container-width * 15 / 24);
-}
-
-.res-16,
-.res-two-thirds {
-  max-width: calc($container-width * 16 / 24);
-}
-
-.res-17 {
-  max-width: calc($container-width * 17 / 24);
-}
-
-.res-18,
-.res-three-fourths {
-  max-width: calc($container-width * 18 / 24);
-}
-
-.res-19 {
-  max-width: calc($container-width * 19 / 24);
-}
-
-.res-4-5,
-.res-four-fifths {
-  max-width: calc($container-width * 4 / 5);
-}
-
-.res-20 {
-  max-width: calc($container-width * 20 / 24);
-}
-
-.res-21 {
-  max-width: calc($container-width * 21 / 24);
-}
-
-.res-22 {
-  max-width: calc($container-width * 22 / 24);
-}
-
-.res-23 {
-  max-width: calc($container-width * 23 / 24);
-}
-
-.res-24,
-.res-full {
-  max-width: calc($container-width * 24 / 24);
-}
-
-// --------------------------------------------------------- flex options (esp. for .row and .col-row classes)
-
-.flex-right {
-  justify-content: flex-end;
-}
-
-.flex-center {
-  justify-content: center;
-}
-
-.flex-middle {
-  align-items: center;
-}
-
-.flex-bottom {
-  align-items: bottom;
 }
 
 // --------------------------------------------------------- margin
@@ -387,7 +255,7 @@ ul.two {
 // --------------------------------------------------------- copy color
 
 @each $color-name, $color-code in $font-color-additional {
-  .#{$color-name} {
+  .font-#{$color-name} {
     color: $color-code;
   }
 }
@@ -459,7 +327,7 @@ template,
 
 // --------------------------------------------------------- responsive elements
 
-@include mediaquery(phablet) {
+@include create-media-query(phablet) {
   ul.two {
     columns: 1;
   }
@@ -515,8 +383,19 @@ template,
 
 /* notes
   
-  responsive letter spacing formula: calc((x)px - (0.0y)em)
+    responsive letter spacing formula: calc((x)px - (0.0y)em)
 
     container padding usually between 10 - 40px or 1.66667rem
 
-    recommended max-width for text - 560px */
+    recommended max-width for text - 560px 
+    
+    element structure => 
+    section.background-color
+    div.margin
+    div.container
+    div.row/.col-row
+    div.column/.restrictor
+    div (optional) .wrapper 
+    [content]
+    
+*/
