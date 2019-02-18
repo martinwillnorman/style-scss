@@ -2,10 +2,9 @@
   "dependencies": {
     "normalize.scss": "^0.1.0"
   },
-  "name": "JumpStart",
+  "name": "@martinwn/jump-start",
   "version": "1.0.0",
   "description": "Scss Framework",
-  "main": "style.scss",
   "repository": "https://github.com/martinwillnorman/style-scss.git",
   "author": "William Martin",
   "license": "MIT"
