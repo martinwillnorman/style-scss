@@ -3,7 +3,7 @@
     "normalize.scss": "^0.1.0"
   },
   "name": "@martinwn/jump-start",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Scss Framework",
   "repository": "https://github.com/martinwillnorman/style-scss.git",
   "author": "William Martin",
